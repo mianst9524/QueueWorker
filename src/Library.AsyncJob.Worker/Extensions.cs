@@ -3,6 +3,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 
 namespace Library.AsyncJob.Worker
 {
@@ -26,6 +27,8 @@ namespace Library.AsyncJob.Worker
         public static IServiceCollection AddConsumer(this IServiceCollection services, Assembly assembly = null)
         {
             assembly ??= Assembly.GetCallingAssembly();
+            
+            Log.Information("AddConsumer: {assembly}", assembly.FullName);
 
             var provider = new ConsumerResolver();
             services.AddSingleton(provider);
@@ -40,6 +43,8 @@ namespace Library.AsyncJob.Worker
                 {
                     throw new Exception($"{consumerType.FullName} は {interfaceName} を実装する必要があります");
                 }
+                
+                Log.Information("登録: interface={interface}, implement={implement}", interfaceType.FullName, consumerType.FullName);
                 
                 provider.Add(interfaceType.FullName, consumerType);
                 services.AddScoped(consumerType);

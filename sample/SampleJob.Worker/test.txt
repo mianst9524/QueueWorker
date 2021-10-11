@@ -1,0 +1,21 @@
+SampleJob.Job.IHelloJob
+Hello
+{
+  "Name": "Kitani"
+}
+
+----------------------------
+SampleJob.Job.ICalcJob
+Add
+{
+  "A": 1,
+  "B": 2
+}
+
+----------------------------
+SampleJob.Job.ICalcJob
+Sub
+{
+  "A": 152,
+  "B": 220
+}

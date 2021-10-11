@@ -16,6 +16,12 @@ export class CdkStack extends cdk.Stack {
     
     const queue = new sqs.Queue(this, 'queue', {
       fifo: true,
+      queueName: 'asyncjob-sample-queue.fifo'
+    });
+
+    const queueDev1 = new sqs.Queue(this, 'queue-dev1', {
+      fifo: true,
+      queueName: 'asyncjob-sample-queue-dev1.fifo'
     });
     
     new cdk.CfnOutput(this, 'lambda-role-name', {
@@ -26,6 +32,11 @@ export class CdkStack extends cdk.Stack {
     new cdk.CfnOutput(this, 'queue-url', {
       exportName: `${id}:queue-url`,
       value: queue.queueUrl,
+    });
+
+    new cdk.CfnOutput(this, 'queue-dev1-url', {
+      exportName: `${id}:queue-dev1-url`,
+      value: queueDev1.queueUrl,
     });
   }
 }
