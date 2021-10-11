@@ -40,6 +40,7 @@ namespace Library.AsyncJob.Worker
             {
                 Log.Information("Press Ctrl+C...");
                 cancellationTokenSource.Cancel();
+                args.Cancel = true;
             };
             return cancellationTokenSource;
         }

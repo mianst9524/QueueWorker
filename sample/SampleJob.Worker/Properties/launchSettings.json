@@ -5,7 +5,7 @@
       "commandName": "Project",
       "environmentVariables": {
         "DOTNETCORE_ENVIRONMENT": "Development",
-        "AWS_PROFILE": "jumboly"
+        "AWS_PROFILE": "sdk"
       }
     }
   }

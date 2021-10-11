@@ -1,1 +1,1 @@
-dotnet lambda deploy-function --profile jumboly
+dotnet lambda deploy-function
